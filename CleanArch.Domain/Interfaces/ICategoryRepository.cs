@@ -6,7 +6,7 @@ public interface ICategoryRepository
 {
     Task<IEnumerable<Category>> GetCategorie();
     Task<Category> GetById(int id);
-    Task Create(Category category);
-    Task Update(Category category);
-    Task Delete(Category category);
+    Task<Category> Create(Category category);
+    Task<Category> Update(Category category);
+    Task<Category> Remove(Category category);
 }
