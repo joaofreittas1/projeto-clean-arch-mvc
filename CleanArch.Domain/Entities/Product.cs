@@ -40,6 +40,7 @@ public sealed class Product : Entity
         DomainExceptionValidation.When(description.Length < 5, "A descrição do produto deve conter no mínimo 5 caracteres");
         DomainExceptionValidation.When(price < 0, "O preço do produto não pode ser negativo");
         DomainExceptionValidation.When(stock < 0, "O estoque do produto não pode ser negativo");
+        DomainExceptionValidation.When(image != null && image.Length > 100, "O nome da imagem do produto deve conter no máximo 100 caracteres");
 
         Name = name;
         Description = description;

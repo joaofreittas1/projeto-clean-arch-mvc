@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="CleanArch.Application/CleanArch.Application.csproj" />
+  <Project Path="CleanArch.Domain.Tests/CleanArch.Domain.Tests.csproj" Id="e61bf617-51f8-422d-b567-2876993595a4" />
   <Project Path="CleanArch.Domain/CleanArch.Domain.csproj" />
   <Project Path="CleanArch.Infra.Data/CleanArch.Infra.Data.csproj" />
   <Project Path="CleanArch.Infra.IoC/CleanArch.Infra.IoC.csproj" />
