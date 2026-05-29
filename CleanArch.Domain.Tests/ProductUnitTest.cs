@@ -40,4 +40,33 @@ public  class ProductUnitTest
 
         action.Should().Throw<CleanArch.Domain.Validation.DomainExceptionValidation>().WithMessage("O nome da imagem do produto deve conter no máximo 100 caracteres");
     }
+
+    [Fact]
+    public void Create_Product_WithNullImageName_NoDomainException()
+    {
+        Action action = () => new Product(1, "Product name", "Product description", 10.0m, 5, null);
+        action.Should().NotThrow<CleanArch.Domain.Validation.DomainExceptionValidation>();
+    }
+
+    [Fact]
+    public void Create_Product_WithEmptyImageName_NoDomainException()
+    {
+        Action action = () => new Product(1, "Product name", "Product description", 10.0m, 5, string.Empty);
+        action.Should().NotThrow<CleanArch.Domain.Validation.DomainExceptionValidation>();
+    }
+
+    [Fact]
+    public void Create_Product_InvalidPriceValue_ExceptionDomainNegativeValue()
+    {
+        Action action = () => new Product(1, "Product name", "Product description", -10.0m, 5, "product image");
+        action.Should().Throw<CleanArch.Domain.Validation.DomainExceptionValidation>().WithMessage("O preço do produto não pode ser negativo");
+    }
+
+    [Theory]
+    [InlineData(-10)]
+    public void Create_Product_InvalidStockValue_ExceptionDomainNegativeValue(int value)
+    {
+        Action action = () => new Product(1, "Product name", "Product description", 10.0m, value, "product image");
+        action.Should().Throw<CleanArch.Domain.Validation.DomainExceptionValidation>().WithMessage("O estoque do produto não pode ser negativo");
+    }
 }
